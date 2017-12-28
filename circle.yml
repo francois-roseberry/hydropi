@@ -7,7 +7,7 @@ jobs:
     steps:
       - run:
           name: Registering qemu
-          commmand: docker run --rm --privileged multiarch/qemu-user-static:register --reset
+          command: docker run --rm --privileged multiarch/qemu-user-static:register --reset
       - checkout
       - run:
           name: Installing dependencies
