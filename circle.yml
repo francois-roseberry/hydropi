@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/hydropi
     docker:
-      - image: node:7.10
+      - image: hypriot/rpi-node:8.1
     steps:
       - checkout
       - run:
