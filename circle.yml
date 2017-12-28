@@ -3,11 +3,8 @@ jobs:
   build:
     working_directory: ~/hydropi
     docker:
-      - image: resin/raspberry-pi-node:9
+      - image: node:7.10
     steps:
-      - run:
-          name: Registering qemu
-          command: docker run --rm --privileged multiarch/qemu-user-static:register --reset
       - checkout
       - run:
           name: Installing dependencies
