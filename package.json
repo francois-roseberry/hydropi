@@ -1,0 +1,28 @@
+{
+  "name": "hydropi",
+  "version": "0.1.0",
+  "description": "hydroponics controller web app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/francois-roseberry/hydropi.git"
+  },
+  "keywords": [
+    "hydroponics",
+    "raspberry pi",
+    "nodejs",
+    "arm"
+  ],
+  "author": "François Roseberry",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/francois-roseberry/hydropi/issues"
+  },
+  "homepage": "https://github.com/francois-roseberry/hydropi#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
