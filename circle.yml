@@ -15,11 +15,17 @@ jobs:
       - run:
           name: Running client tests
           command: npm run client:test
+      - save_cache:
+          key: repo-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/hydropi
   deploy:
     machine:
         enabled: true
     working_directory: ~/hydropi
     steps:
+      - restore_cache:
+          key: repo-{{ .Environment.CIRCLE_SHA1 }}
       - run:
           name : Deploy to Resin.io
           command: |
