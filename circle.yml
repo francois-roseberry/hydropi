@@ -29,9 +29,6 @@ jobs:
       - run:
           name : Deploy to Resin.io
           command: |
-            echo -e $RESIN_DEPLOY_KEY > id_rsa
-            chmod 0600 id_rsa
-            ssh-add ./id_rsa
             cat resinkey >> ~/.ssh/known_hosts
             git remote add resin gh_francois_roseberry@git.resin.io:gh_francois_roseberry/hydropi.git
             git push resin master
