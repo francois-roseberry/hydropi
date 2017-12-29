@@ -16,8 +16,8 @@ jobs:
           name: Running client tests
           command: npm run client:test
   deploy:
-    docker:
-      - image: ubuntu:14.04
+    machine:
+        enabled: true
     working_directory: ~/hydropi
     steps:
       - run:
