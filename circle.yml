@@ -20,8 +20,8 @@ jobs:
           paths:
             - ~/hydropi
   deploy:
-    machine:
-        enabled: true
+    docker:
+      - image: node:7.10
     working_directory: ~/hydropi
     steps:
       - restore_cache:
