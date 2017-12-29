@@ -3,10 +3,10 @@ const app = express();
 const http = require('http').Server(app);
 
 
-app.get('/', (req, res) => {
-  res.send('hello world');
-});
+app.use(express.static('client/build'));
+
+const PORT = 3000;
 
 http.listen(PORT, () => {
-	log('Question game server listening on port ' + PORT);
+	console.log('Hydropi server listening on port ' + PORT);
 });

@@ -4,7 +4,11 @@
   "description": "hydroponics controller web app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client:test": "cross-env CI=true npm --prefix ./client test",
+    "client:dependencies": "npm install --prefix ./client ./client",
+    "client:build": "npm --prefix ./client run build"
   },
   "repository": {
     "type": "git",
@@ -23,6 +27,7 @@
   },
   "homepage": "https://github.com/francois-roseberry/hydropi#readme",
   "dependencies": {
+    "cross-env": "^5.1.3",
     "express": "^4.16.2"
   }
 }
