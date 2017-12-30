@@ -32,6 +32,8 @@ jobs:
       - run:
           name : Deploy to Resin.io
           command: |
+            mkdir ~/.ssh
+            cat resinkey >> ~/.ssh/known_hosts
             git remote add resin gh_francois_roseberry@git.resin.io:gh_francois_roseberry/hydropi.git
             git push resin master
 workflows:
