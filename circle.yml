@@ -26,10 +26,12 @@ jobs:
     steps:
       - restore_cache:
           key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+      - add_ssh_keys:
+          fingerprints:
+            - "32:1c:20:9b:83:55:80:e9:37:1e:5f:86:9a:49:84:08"
       - run:
           name : Deploy to Resin.io
           command: |
-            cat resinkey >> ~/.ssh/known_hosts
             git remote add resin gh_francois_roseberry@git.resin.io:gh_francois_roseberry/hydropi.git
             git push resin master
 workflows:
