@@ -1,0 +1,131 @@
+{
+    "globals": {
+        "$": true,
+        "ENV": true,
+        "afterEach": true,
+        "beforeEach": true,
+        "__dirname": true,
+        "describe": true,
+        "expect": true,
+        "it": true,
+        "jest": true,
+        "pit": true,
+        "process": true
+    },
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true
+    },
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "no-case-declarations": 0,
+        "comma-spacing": 1,
+        "indent": [2, 2],
+        "jsx-quotes": 2,
+        "key-spacing": 0,
+        "max-len": [1, 120, 4],
+        "max-statements": [2, 25],
+        "max-depth": 1,
+        "no-extra-semi": 2,
+        "no-trailing-spaces": 1,
+        "no-unused-vars": 1,
+        "no-useless-constructor": 2,
+        "object-curly-spacing": ["error", "always"],
+        "react/display-name": [2, {
+            "ignoreTranspilerName": false
+        }],
+        "react/forbid-prop-types": [0, {
+            "forbid": []
+        }],
+        "react/jsx-boolean-value": [2, "never"],
+        "react/jsx-closing-bracket-location": [0, {
+            "nonEmpty": "tag-aligned",
+            "selfClosing": "tag-aligned"
+        }],
+        "react/jsx-curly-spacing": [1, "always", {
+            "allowMultiline": true
+        }],
+        "react/jsx-equals-spacing": [2, "never"],
+        "react/jsx-handler-names": [2, {
+            "eventHandlerPrefix": "on",
+            "eventHandlerPropPrefix": "on"
+        }],
+        "react/jsx-indent": [2, 2],
+        "react/jsx-indent-props": [2, 2],
+        "react/jsx-key": 2,
+        "react/jsx-max-props-per-line": [0, {
+        }],
+        "react/jsx-no-bind": [2, {
+            "ignoreRefs": false,
+            "allowArrowFunctions": false,
+            "allowBind": false
+        }],
+        "react/jsx-no-duplicate-props": [2, {
+            "ignoreCase": false
+        }],
+        "react/jsx-no-undef": 2,
+        "react/jsx-pascal-case": [2, {
+            "allowAllCaps": false
+        }],
+        "react/jsx-sort-props": [2, {
+            "callbacksLast": true,
+            "ignoreCase": false,
+            "shorthandFirst": true
+        }],
+        "react/jsx-space-before-closing": [2, "always"],
+        "react/jsx-uses-react": 2,
+        "react/jsx-uses-vars": 2,
+        "react/no-danger": 2,
+        "react/no-deprecated": [2, {
+            "react": "0.14.0"
+        }],
+        "react/no-did-mount-set-state": [2, "allow-in-func"],
+        "react/no-did-update-set-state": [2, "allow-in-func"],
+        "react/no-direct-mutation-state": 2,
+        "react/no-is-mounted": 2,
+        "react/no-multi-comp": [2, {
+            "ignoreStateless": false
+        }],
+        "react/no-string-refs": 2,
+        "react/no-unknown-property": 2,
+        "react/prefer-es6-class": [0, "always"],
+        "react/prefer-stateless-function": 0,
+        "react/prop-types": [2, {
+            "ignore": [],
+            "customValidators": []
+        }],
+        "react/react-in-jsx-scope": 2,
+        "react/require-extension": [2, {
+            "extensions": [".js", ".jsx"]
+        }],
+        "react/self-closing-comp": 2,
+        "react/sort-comp": [2, {
+            "order": ["static-methods", "lifecycle", "everything-else", "/^on.+$/", "rendering"],
+            "groups": {
+                "rendering": ["/^render.+$/", "render"],
+                "lifecycle": ["displayName", "propTypes", "contextTypes", "childContextTypes", "mixins", "statics", "defaultProps", "constructor", "getDefaultProps", "getInitialState", "state", "getChildContext", "componentWillMount", "componentDidMount", "componentWillReceiveProps", "shouldComponentUpdate", "componentWillUpdate", "componentDidUpdate", "componentWillUnmount"]
+            }
+        }],
+        "react/sort-prop-types": [2, {
+            "callbacksLast": true,
+            "ignoreCase": false
+        }],
+        "react/wrap-multilines": [2, {
+            "declaration": true,
+            "assignment": true,
+            "return": true
+        }]
+    }
+}

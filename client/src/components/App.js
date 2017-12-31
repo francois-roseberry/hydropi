@@ -12,7 +12,7 @@ export default class App extends Component {
       <IntlProvider locale={ DEFAULT_LOCALE } messages={ translations[DEFAULT_LOCALE] }>
         <div className="app">
           <header className="app-header">
-            <img src={logo} className="app-logo" alt="logo" />
+            <img src={ logo } className="app-logo" alt="logo" />
             <h1 className="app-title"><FormattedMessage id="app.title" /></h1>
           </header>
           <p className="app-intro">
