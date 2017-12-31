@@ -6,7 +6,7 @@ jobs:
     working_directory: ~/hydropi
     steps:
       - checkout
-      - restore_cache
+      - restore_cache:
           key: client-deps-{{ .Branch }}-{{ checksum "client/package.json"}}
       - run:
           name: Installing server dependencies
