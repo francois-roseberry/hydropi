@@ -12,9 +12,8 @@ describe('Chart control', () => {
     expect(control.prop('title')).toBe(TITLE);
   });
 
-  it('renders a 200 x 200 line chart', () => {
-    const chart = wrapper.find('.chart-wrapper LineChart');
-    expect(chart.prop('width')).toBe(200);
-    expect(chart.prop('height')).toBe(200);
+  it('renders a chart', () => {
+    const chart = wrapper.find('Chart');
+    expect(chart).toHaveLength(1);
   });
 });
