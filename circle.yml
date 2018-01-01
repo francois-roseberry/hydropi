@@ -6,12 +6,18 @@ jobs:
     working_directory: ~/hydropi
     steps:
       - checkout
+      - restore_cache:
+          key: client-deps-{{ .Branch }}-{{ checksum "client/package.json"}}
       - run:
           name: Installing server dependencies
           command: npm install
       - run:
           name: Installing client dependencies
           command: npm run client:dependencies
+      - save_cache:
+          key: client-deps-{{ .Branch }}-{{ checksum "client/package.json"}}
+          paths:
+            - "client/node_modules"
       - run:
           name: Running client tests
           command: npm run client:test
