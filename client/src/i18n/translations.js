@@ -7,7 +7,8 @@ export const translations = {
     'control.temperature.air.title': 'Air Temperature',
     'control.temperature.water.title': 'Water Temperature',
     'control.ventilation.title': 'Ventilation',
-    'control.lighting.title': 'Lighting'
+    'control.lighting.title': 'Lighting',
+    'control.pump.water.title': 'Water Pump'
   }
 }
 
