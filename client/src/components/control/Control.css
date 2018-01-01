@@ -1,0 +1,9 @@
+.control {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.control-content {
+  margin-top: 10px;
+}

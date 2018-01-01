@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
 import { LineChart, XAxis, YAxis, Line, CartesianGrid } from 'recharts';
+
+import Control from './Control';
 
 import './ChartControl.css';
 
@@ -15,19 +16,16 @@ export default class ChartControl extends React.Component {
 
   render() {
     return (
-      <div className="control">
-        <FormattedMessage id={ this.props.title } />
-        <div className="control-content">
-          <div className="chart-wrapper">
-            <LineChart width={ 200 } height={ 200 } data={ this.state.data }>
-              <XAxis dataKey="x" />
-              <YAxis />
-              <CartesianGrid strokeDasharray="3 3" />
-              <Line dataKey="y" stroke="#8894d8" type="monotone" />
-            </LineChart>
-          </div>
+      <Control title={ this.props.title }>
+        <div className="chart-wrapper">
+          <LineChart width={ 200 } height={ 200 } data={ this.state.data }>
+            <XAxis dataKey="x" />
+            <YAxis />
+            <CartesianGrid strokeDasharray="3 3" />
+            <Line dataKey="y" stroke="#8894d8" type="monotone" />
+          </LineChart>
         </div>
-      </div>
+      </Control>
     );
   }
 }
