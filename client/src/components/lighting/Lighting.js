@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ToggleControl from '../ToggleControl';
+import ToggleControl from '../control/ToggleControl';
 
 export default class Lighting extends React.Component {
   render() {

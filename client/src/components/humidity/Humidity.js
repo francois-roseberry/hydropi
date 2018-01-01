@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ChartControl from '../ChartControl';
+import ChartControl from '../control/ChartControl';
 
 export default class Humidity extends React.Component {
   render() {
