@@ -4,9 +4,9 @@ import { shallow } from 'enzyme';
 import Humidity from './Humidity';
 
 describe('Humidity control', () => {
-  it('renders a title', () => {
+  it('renders a ChartControl', () => {
     const wrapper = shallow(<Humidity />);
-    const message = wrapper.find('.control FormattedMessage');
-    expect(message.prop('id')).toBe('control.humidity.title');
+    const message = wrapper.find('ChartControl');
+    expect(message.prop('title')).toBe('control.humidity.title');
   });
 });

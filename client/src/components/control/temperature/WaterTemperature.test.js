@@ -4,9 +4,9 @@ import { shallow } from 'enzyme';
 import WaterTemperature from './WaterTemperature';
 
 describe('WaterTemperature control', () => {
-  it('renders a title', () => {
+  it('renders a ChartControl', () => {
     const wrapper = shallow(<WaterTemperature />);
-    const message = wrapper.find('.control FormattedMessage');
-    expect(message.prop('id')).toBe('control.temperature.water.title');
+    const message = wrapper.find('ChartControl');
+    expect(message.prop('title')).toBe('control.temperature.water.title');
   });
 });

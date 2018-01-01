@@ -1,12 +1,9 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+
+import ChartControl from '../ChartControl';
 
 export default class WaterTemperature extends React.Component {
   render() {
-    return (
-      <div className="control">
-        <FormattedMessage id="control.temperature.water.title" />
-      </div>
-    );
+    return <ChartControl title="control.temperature.water.title" />;
   }
 }
