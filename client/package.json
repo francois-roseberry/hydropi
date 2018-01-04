@@ -9,9 +9,11 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-intl": "^2.4.0",
+    "react-redux": "^5.0.6",
     "react-scripts": "1.0.17",
     "react-toggle-button": "^2.2.0",
-    "recharts": "^1.0.0-beta.7"
+    "recharts": "^1.0.0-beta.7",
+    "redux": "^3.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
