@@ -1,4 +1,4 @@
-import lightingReducer from './lighting';
+import { lightingReducer } from './lighting';
 
 describe('Lighting reducer', () => {
   it('returns the default state', () => {

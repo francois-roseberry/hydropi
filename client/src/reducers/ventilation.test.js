@@ -1,4 +1,4 @@
-import ventilationReducer from './ventilation';
+import { ventilationReducer } from './ventilation';
 
 describe('Ventilation reducer', () => {
   it('returns the default state', () => {

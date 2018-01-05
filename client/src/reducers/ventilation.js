@@ -1,8 +1,5 @@
-const ventilationReducer = (state = DEFAULT_VENTILATION_STATE) => {
+export const ventilationReducer = (state = DEFAULT_VENTILATION_STATE) => {
   return state;
 }
 
-const DEFAULT_VENTILATION_STATE = { state: 'off' };
-
-
-export default ventilationReducer;
+const DEFAULT_VENTILATION_STATE = { state: 'off', mode: 'automatic' };

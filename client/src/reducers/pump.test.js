@@ -1,4 +1,4 @@
-import pumpReducer from './pump';
+import { pumpReducer } from './pump';
 
 describe('Pump reducer', () => {
   it('returns the default state', () => {

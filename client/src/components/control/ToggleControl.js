@@ -12,18 +12,16 @@ export default class ToggleControl extends React.Component {
     super(props);
 
     bindAll(this, ['onToggle']);
-    this.state = { value: false };
   }
 
   onToggle() {
-    this.setState({ value: !this.state.value });
   }
 
   render() {
     return (
       <Control title={ this.props.title }>
         <div className="toggle-wrapper">
-          <Toggle value={ this.state.value } onToggle={ this.onToggle } />
+          <Toggle value={ this.props.value } onToggle={ this.onToggle } />
         </div>
       </Control>
     );
@@ -31,5 +29,10 @@ export default class ToggleControl extends React.Component {
 }
 
 ToggleControl.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  value: PropTypes.bool.isRequired
+};
+
+ToggleControl.defaultProps = {
+  value: false
 };
