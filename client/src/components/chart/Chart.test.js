@@ -4,12 +4,13 @@ import { shallow } from 'enzyme';
 import Chart from './Chart';
 
 describe('Chart', () => {
-  const wrapper = shallow(<Chart />);
+  const wrapper = shallow(<Chart data={ [{ x: 1, y: 1 }] } />);
 
   it('renders a 200 x 200 line chart', () => {
     const chart = wrapper.find('.chart-wrapper LineChart');
     expect(chart.prop('width')).toBe(200);
     expect(chart.prop('height')).toBe(200);
+    expect(chart.prop('data')).toMatchObject([{ x: 1, y: 1 }]);
   });
 
   it('renders an X axis', () => {

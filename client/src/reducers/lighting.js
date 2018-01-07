@@ -1,5 +1,5 @@
-export const lightingReducer = (state = DEFAULT_LIGHTING_STATE) => {
+export const lightingReducer = (state = INITIAL_LIGHTING_STATE) => {
   return state;
 }
 
-const DEFAULT_LIGHTING_STATE = { state: 'off', mode: 'automatic' };
+const INITIAL_LIGHTING_STATE = { state: 'off', mode: 'automatic' };

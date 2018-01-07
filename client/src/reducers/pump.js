@@ -1,5 +1,5 @@
-export const pumpReducer = (state = DEFAULT_PUMP_STATE) => {
+export const pumpReducer = (state = INITIAL_PUMP_STATE) => {
   return state;
 }
 
-const DEFAULT_PUMP_STATE = { state: 'off' };
+const INITIAL_PUMP_STATE = { state: 'off' };

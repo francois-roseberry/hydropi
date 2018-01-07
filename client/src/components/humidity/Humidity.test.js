@@ -6,7 +6,7 @@ import Humidity from './Humidity';
 describe('Humidity control', () => {
   it('renders a ChartControl', () => {
     const wrapper = shallow(<Humidity />);
-    const message = wrapper.find('ChartControl');
+    const message = wrapper.find('Connect(ChartControl)');
     expect(message.prop('title')).toBe('control.humidity.title');
   });
 });

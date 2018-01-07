@@ -6,7 +6,7 @@ import WaterTemperature from './WaterTemperature';
 describe('WaterTemperature control', () => {
   it('renders a ChartControl', () => {
     const wrapper = shallow(<WaterTemperature />);
-    const message = wrapper.find('ChartControl');
+    const message = wrapper.find('Connect(ChartControl)');
     expect(message.prop('title')).toBe('control.temperature.water.title');
   });
 });
