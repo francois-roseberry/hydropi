@@ -9,10 +9,14 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import reducers from './reducers';
 import { init as initAirTemperatureSocket } from './actions/airTemperature.js';
+import { init as initWaterTemperatureSocket } from './actions/waterTemperature.js';
+import { init as initHumiditySocket } from './actions/humidity.js';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 const store = createStoreWithMiddleware(reducers);
 initAirTemperatureSocket(store);
+initWaterTemperatureSocket(store);
+initHumiditySocket(store);
 
 ReactDOM.render(
   <Provider store={ store }>

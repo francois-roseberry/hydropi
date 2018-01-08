@@ -1,9 +1,9 @@
-import { airTemperatureReducer } from './airTemperature';
-import { AIR_TEMPERATURE_NEW_READING } from '../actions/types.js';
+import { createSensorReducer } from './sensor';
 
-describe('Air Temperature reducer', () => {
+describe('Sensor reducer', () => {
+  const reducer = createSensorReducer('new_reading');
   it('returns the initial state', () => {
-    const state = airTemperatureReducer();
+    const state = reducer();
     expect(state).toMatchObject({ data: [] });
   });
 
@@ -11,8 +11,8 @@ describe('Air Temperature reducer', () => {
     it('appends it to the end of the data array, discarding the first one so there are always 4', () => {
       const reading = { x: 1, y: 2 };
       const state = { data: [{}, {}, {}, {}] };
-      const action = { type: AIR_TEMPERATURE_NEW_READING, reading };
-      const newState = airTemperatureReducer(state, action);
+      const action = { type: 'new_reading', reading };
+      const newState = reducer(state, action);
       expect(newState).toMatchObject({ data: [{}, {}, {}, reading] });
     });
   });
