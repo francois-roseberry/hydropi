@@ -6,8 +6,8 @@ import { WaterPump } from './WaterPump';
 describe('WaterPump control', () => {
   const wrapper = shallow(<WaterPump isActivated />);
 
-  it('renders a ToggleControl', () => {
-    const component = wrapper.find('ToggleControl');
+  it('renders a ActuatorControl', () => {
+    const component = wrapper.find('ActuatorControl');
     expect(component.prop('title')).toBe('control.pump.water.title');
     expect(component.prop('value')).toBe(true);
   });

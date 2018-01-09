@@ -6,8 +6,8 @@ import { Ventilation } from './Ventilation';
 describe('Ventilation control', () => {
   const wrapper = shallow(<Ventilation isActivated />);
 
-  it('renders a ToggleControl', () => {
-    const component = wrapper.find('ToggleControl');
+  it('renders a ActuatorControl', () => {
+    const component = wrapper.find('ActuatorControl');
     expect(component.prop('title')).toBe('control.ventilation.title');
     expect(component.prop('value')).toBe(true);
   });

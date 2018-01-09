@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ToggleControl from './ToggleControl';
+import ActuatorControl from './ActuatorControl';
 
-describe('Toggle control', () => {
+describe('Actuator control', () => {
   const TITLE = 'title';
-  const getWrapper = ({ value = false } = {}) => shallow(<ToggleControl title={ TITLE } value={ value } />);
+  const getWrapper = ({ value = false } = {}) => shallow(<ActuatorControl title={ TITLE } value={ value } />);
   const wrapper = getWrapper();
 
   it('gives the title to the control', () => {

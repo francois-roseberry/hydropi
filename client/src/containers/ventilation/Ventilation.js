@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import ToggleControl from '../../components/control/ToggleControl';
+import ActuatorControl from '../../components/control/ActuatorControl';
 import { selectIsActivated } from '../../selectors/ventilation';
 
 class Ventilation extends React.Component {
   render() {
-    return <ToggleControl title="control.ventilation.title" value={ this.props.isActivated } />;
+    return <ActuatorControl title="control.ventilation.title" value={ this.props.isActivated } />;
   }
 }
 

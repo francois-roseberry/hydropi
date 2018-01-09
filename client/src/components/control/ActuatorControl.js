@@ -5,9 +5,9 @@ import { bindAll } from 'lodash';
 
 import Control from './Control';
 
-import './ToggleControl.css';
+import './ActuatorControl.css';
 
-export default class ToggleControl extends React.Component {
+export default class ActuatorControl extends React.Component {
   constructor(props) {
     super(props);
 
@@ -28,11 +28,11 @@ export default class ToggleControl extends React.Component {
   }
 }
 
-ToggleControl.propTypes = {
+ActuatorControl.propTypes = {
   title: PropTypes.string.isRequired,
   value: PropTypes.bool.isRequired
 };
 
-ToggleControl.defaultProps = {
+ActuatorControl.defaultProps = {
   value: false
 };
