@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SensorControl from '../../containers/control/SensorControl';
+import SensorControl from '../../containers/sensor/SensorControl';
 import { selectData } from '../../selectors/airTemperature';
 
 export default class AirTemperature extends React.Component {
