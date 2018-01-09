@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { ChartControl } from './ChartControl';
+import { SensorControl } from './SensorControl';
 
-describe('Chart control', () => {
+describe('Sensor control', () => {
   const TITLE = 'title';
   const selectData = jest.fn();
-  const wrapper = shallow(<ChartControl data={ [{ x: 1, y: 1 }]} selectData={ selectData } title={ TITLE } />);
+  const wrapper = shallow(<SensorControl data={ [{ x: 1, y: 1 }] } selectData={ selectData } title={ TITLE } />);
 
   it('gives the title to the control', () => {
     const control = wrapper.find('Control');
