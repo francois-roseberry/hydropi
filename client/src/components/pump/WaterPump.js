@@ -1,9 +1,10 @@
 import React from 'react';
 
-import ToggleControl from '../control/ToggleControl';
+import ActuatorControl from '../../containers/actuator/ActuatorControl';
+import { selectIsActivated } from '../../selectors/pump';
 
 export default class WaterPump extends React.Component {
   render() {
-    return <ToggleControl title="control.pump.water.title" />;
+    return <ActuatorControl selectIsActivated={ selectIsActivated } title="control.pump.water.title" />;
   }
 }

@@ -4,11 +4,6 @@ import { IntlProvider, FormattedMessage } from 'react-intl';
 import { DEFAULT_LOCALE } from '../config/Env';
 import { translations } from '../i18n/translations';
 import logo from './logo.svg';
-import Humidity from './humidity/Humidity';
-import Lighting from './lighting/Lighting';
-import AirTemperature from './temperature/AirTemperature';
-import WaterTemperature from './temperature/WaterTemperature';
-import Ventilation from './ventilation/Ventilation';
 import Dashboard from './dashboard/Dashboard';
 import './App.css';
 

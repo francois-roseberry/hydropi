@@ -1,9 +1,10 @@
 import React from 'react';
 
-import ToggleControl from '../control/ToggleControl';
+import ActuatorControl from '../../containers/actuator/ActuatorControl';
+import { selectIsActivated } from '../../selectors/lighting';
 
 export default class Lighting extends React.Component {
   render() {
-    return <ToggleControl title="control.lighting.title" />;
+    return <ActuatorControl selectIsActivated={ selectIsActivated } title="control.lighting.title" />;
   }
 }

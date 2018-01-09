@@ -1,9 +1,10 @@
 import React from 'react';
 
-import ChartControl from '../control/ChartControl';
+import SensorControl from '../../containers/sensor/SensorControl';
+import { selectData } from '../../selectors/airTemperature';
 
 export default class AirTemperature extends React.Component {
   render() {
-    return <ChartControl title="control.temperature.air.title" />;
+    return <SensorControl selectData={ selectData } title="control.temperature.air.title" />;
   }
 }
