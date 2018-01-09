@@ -2,6 +2,7 @@ import { createSensorReducer } from './sensor';
 
 describe('Sensor reducer', () => {
   const reducer = createSensorReducer('new_reading');
+  
   it('returns the initial state', () => {
     const state = reducer();
     expect(state).toMatchObject({ data: [] });
