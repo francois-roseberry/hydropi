@@ -1,3 +1,5 @@
+import { Modes } from '../containers/actuator/modes';
+
 export const createActuatorReducer = newStateActionType => (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {
     case newStateActionType:
@@ -7,4 +9,4 @@ export const createActuatorReducer = newStateActionType => (state = INITIAL_STAT
   }
 }
 
-const INITIAL_STATE = { state: false, mode: 'automatic' };
+const INITIAL_STATE = { state: false, mode: Modes.AUTOMATIC };
