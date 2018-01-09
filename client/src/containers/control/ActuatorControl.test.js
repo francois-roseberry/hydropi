@@ -1,11 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ActuatorControl from './ActuatorControl';
+import { ActuatorControl } from './ActuatorControl';
 
 describe('Actuator control', () => {
   const TITLE = 'title';
-  const getWrapper = ({ value = false } = {}) => shallow(<ActuatorControl title={ TITLE } value={ value } />);
+  const selectIsActivated = jest.fn();
+  const getWrapper = ({ value = false } = {}) =>
+    shallow(<ActuatorControl selectIsActivated={ selectIsActivated } title={ TITLE } value={ value } />);
   const wrapper = getWrapper();
 
   it('gives the title to the control', () => {

@@ -22,17 +22,17 @@ describe('Dashboard', () => {
   });
 
   it('renders Ventilation control', () => {
-    const component = wrapper.find('.dashboard Connect(Ventilation)');
+    const component = wrapper.find('.dashboard Ventilation');
     expect(component).toHaveLength(1);
   });
 
   it('renders Lighting control', () => {
-    const component = wrapper.find('.dashboard Connect(Lighting)');
+    const component = wrapper.find('.dashboard Lighting');
     expect(component).toHaveLength(1);
   });
 
   it('renders WaterPump control', () => {
-    const component = wrapper.find('.dashboard Connect(WaterPump)');
+    const component = wrapper.find('.dashboard WaterPump');
     expect(component).toHaveLength(1);
   });
 });

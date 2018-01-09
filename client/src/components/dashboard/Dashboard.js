@@ -1,11 +1,11 @@
 import React from 'react';
 
 import Humidity from '../humidity/Humidity';
-import Lighting from '../../containers/lighting/Lighting';
+import Lighting from '../lighting/Lighting';
 import AirTemperature from '../temperature/AirTemperature';
 import WaterTemperature from '../temperature/WaterTemperature';
-import Ventilation from '../../containers/ventilation/Ventilation';
-import WaterPump from '../../containers/pump/WaterPump';
+import Ventilation from '../ventilation/Ventilation';
+import WaterPump from '../pump/WaterPump';
 
 export default class Dashboard extends React.Component {
   render() {
