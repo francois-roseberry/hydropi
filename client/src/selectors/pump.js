@@ -1,1 +1,1 @@
-export const selectIsActivated = state => state.pump.state === 'on';
+export const selectIsActivated = state => state.pump.state;

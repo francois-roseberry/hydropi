@@ -1,5 +1,10 @@
-export const createActuatorReducer = () => (state = INITIAL_STATE) => {
-  return state;
+export const createActuatorReducer = newStateActionType => (state = INITIAL_STATE, action = {}) => {
+  switch (action.type) {
+    case newStateActionType:
+      return { ...state, state: action.state };
+    default:
+      return state;
+  }
 }
 
-const INITIAL_STATE = { state: 'off', mode: 'automatic' };
+const INITIAL_STATE = { state: false, mode: 'automatic' };
