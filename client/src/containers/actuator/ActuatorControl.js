@@ -16,6 +16,7 @@ class ActuatorControl extends React.Component {
   }
 
   onToggle() {
+    this.props.setState({ state: !this.props.value });
   }
 
   render() {
@@ -31,6 +32,7 @@ class ActuatorControl extends React.Component {
 
 ActuatorControl.propTypes = {
   selectIsActivated: PropTypes.func.isRequired,
+  setState: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   value: PropTypes.bool
 };
@@ -43,5 +45,9 @@ export const mapStateToProps = (state, props) => ({
   value: props.selectIsActivated(state)
 });
 
+export const mapDispatchToProps = (dispatch, props) => ({
+  setState: (...args) => dispatch(props.setState(...args))
+});
+
 export { ActuatorControl };
-export default connect(mapStateToProps, null)(ActuatorControl);
+export default connect(mapStateToProps, mapDispatchToProps)(ActuatorControl);

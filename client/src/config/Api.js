@@ -5,6 +5,7 @@ export const WATER_TEMPERATURE_SOCKET_NAMESPACE = '/waterTemperature';
 export const HUMIDITY_SOCKET_NAMESPACE = '/humidity';
 
 export const EVENT_NEW_STATE = 'state';
+export const COMMAND_SET_STATE = 'state';
 
 export const LIGHTING_SOCKET_NAMESPACE = '/lighting';
 export const VENTILATION_SOCKET_NAMESPACE = '/ventilation';

@@ -13,6 +13,11 @@ const LIGHTING_SOCKET_NAMESPACE = '/lighting';
 const VENTILATION_SOCKET_NAMESPACE = '/ventilation';
 const PUMP_SOCKET_NAMESPACE = '/pump';
 const EVENT_NEW_STATE = 'state';
+const COMMAND_SET_STATE = 'state';
+
+let lightingState = true;
+let ventilationState = true;
+let pumpState = true;
 
 app.use(express.static('client/build'));
 
@@ -34,13 +39,28 @@ setInterval(() => {
 }, 3000);
 
 lightingNamespace.on('connection', socket => {
-	socket.emit(EVENT_NEW_STATE, true);
+	socket.emit(EVENT_NEW_STATE, lightingState);
+  socket.on(COMMAND_SET_STATE, state => {
+    lightingState = state;
+    console.log('Sending new lighting state : ', lightingState);
+    socket.emit(EVENT_NEW_STATE, lightingState);
+  });
 });
 ventilationNamespace.on('connection', socket => {
-	socket.emit(EVENT_NEW_STATE, true);
+	socket.emit(EVENT_NEW_STATE, ventilationState);
+  socket.on(COMMAND_SET_STATE, state => {
+    ventilationState = state;
+    console.log('Sending new ventilation state : ', ventilationState);
+    socket.emit(EVENT_NEW_STATE, ventilationState);
+  });
 });
 pumpNamespace.on('connection', socket => {
-	socket.emit(EVENT_NEW_STATE, true);
+	socket.emit(EVENT_NEW_STATE, pumpState);
+  socket.on(COMMAND_SET_STATE, state => {
+    pumpState = state;
+    console.log('Sending new pump state : ', pumpState);
+    socket.emit(EVENT_NEW_STATE, pumpState);
+  });
 });
 
 http.listen(PORT, () => {
