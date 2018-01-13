@@ -31,8 +31,8 @@ describe('Dashboard', () => {
     expect(component).toHaveLength(1);
   });
 
-  it('renders WaterPump control', () => {
-    const component = wrapper.find('.dashboard WaterPump');
+  it('renders Pump control', () => {
+    const component = wrapper.find('.dashboard Pump');
     expect(component).toHaveLength(1);
   });
 });

@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import WaterPump from './WaterPump';
+import Pump from './Pump';
 import { setState } from '../../actions/pump';
 import { selectIsActivated } from '../../selectors/pump';
 
-describe('WaterPump control', () => {
-  const wrapper = shallow(<WaterPump />);
+describe('Pump control', () => {
+  const wrapper = shallow(<Pump />);
 
   it('renders a ActuatorControl', () => {
     const component = wrapper.find('Connect(ActuatorControl)');
