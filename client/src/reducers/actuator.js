@@ -1,4 +1,4 @@
-import { Modes } from '../containers/actuator/modes';
+import { Modes } from '../components/actuator/modes';
 
 export const createActuatorReducer = newStateActionType => (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {

@@ -2,13 +2,15 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { ActuatorControl, mapDispatchToProps } from './ActuatorControl';
+import { Modes } from '../../components/actuator/modes';
 
 describe('Actuator control', () => {
   const TITLE = 'title';
   const selectIsActivated = jest.fn();
   const setState = jest.fn();
   const getWrapper = ({ value = false } = {}) =>
-    shallow(<ActuatorControl selectIsActivated={ selectIsActivated } setState={ setState } title={ TITLE } value={ value } />);
+    shallow(<ActuatorControl selectIsActivated={ selectIsActivated } setState={ setState }
+      title={ TITLE } value={ value } />);
   const wrapper = getWrapper();
 
   beforeEach(setState.mockReset);
@@ -18,18 +20,24 @@ describe('Actuator control', () => {
     expect(control.prop('title')).toBe(TITLE);
   });
 
-  it('renders a toggle button', () => {
-    const component = wrapper.find('.toggle-wrapper Toggle');
+  it('renders a ModeToggle', () => {
+    const component = wrapper.find('ModeToggle');
+    expect(component.prop('mode')).toBe(Modes.MANUAL);
+    expect(component.prop('onToggle')).toBeDefined();
+  });
+
+  it('renders a toggle button for state', () => {
+    const component = wrapper.find('.toggle-wrapper.state Toggle');
     expect(component.prop('value')).toBe(false);
   });
 
   it('toggles the button if told to', () => {
-    const component = getWrapper({ value: true }).find('.toggle-wrapper Toggle');
+    const component = getWrapper({ value: true }).find('.toggle-wrapper.state Toggle');
     expect(component.prop('value')).toBe(true);
   });
 
   it('set new state if state button is toggled', () => {
-    const component = wrapper.find('.toggle-wrapper Toggle');
+    const component = wrapper.find('.toggle-wrapper.state Toggle');
     component.simulate('toggle');
     expect(setState).toHaveBeenCalledTimes(1);
     expect(setState).toHaveBeenCalledWith({ state: true });

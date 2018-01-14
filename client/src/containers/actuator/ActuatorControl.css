@@ -1,4 +1,4 @@
-.toggle-wrapper {
+.toggle-wrapper.state {
   display: inline-block;
   margin: auto;
 }

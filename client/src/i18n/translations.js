@@ -3,6 +3,10 @@ export const translations = {
     'app.title': 'Hydropi',
     'app.description': 'Future hydroponics control system',
 
+    'control.actuator.mode.automatic': 'AUTO',
+    'control.actuator.mode.label' : 'Mode',
+    'control.actuator.mode.manual': 'MANUAL',
+
     'control.humidity.title': 'Humidity',
     'control.temperature.air.title': 'Air Temperature',
     'control.temperature.water.title': 'Water Temperature',

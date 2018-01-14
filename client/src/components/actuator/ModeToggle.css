@@ -1,0 +1,13 @@
+.mode {
+  text-align: left;
+  padding: 10px;
+}
+
+.mode span {
+  font-size: 0.9em;
+}
+
+.mode .toggle-wrapper {
+  display: inline-block;
+  float: right;
+}
