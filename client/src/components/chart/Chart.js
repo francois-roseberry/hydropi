@@ -12,7 +12,7 @@ export default class Chart extends React.Component {
           <XAxis dataKey="x" />
           <YAxis />
           <CartesianGrid strokeDasharray="3 3" />
-          <Line dataKey="y" stroke="#8894d8" type="monotone" />
+          <Line dataKey="y" dot={ false } stroke="#8894d8" type="monotone" />
         </LineChart>
       </div>
     );

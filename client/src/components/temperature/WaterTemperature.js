@@ -1,10 +1,10 @@
 import React from 'react';
 
 import SensorControl from '../../containers/sensor/SensorControl';
-import { selectData } from '../../selectors/waterTemperature';
+import { createSensorSelector } from '../../selectors/sensor';
 
 export default class WaterTemperature extends React.Component {
   render() {
-    return <SensorControl selectData={ selectData } title="control.temperature.water.title" />;
+    return <SensorControl selectData={ createSensorSelector('waterTemperature').selectData } title="control.temperature.water.title" />;
   }
 }

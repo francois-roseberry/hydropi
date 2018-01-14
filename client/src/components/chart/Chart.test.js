@@ -33,5 +33,6 @@ describe('Chart', () => {
     expect(line.prop('dataKey')).toBe('y');
     expect(line.prop('stroke')).toBe('#8894d8');
     expect(line.prop('type')).toBe('monotone');
+    expect(line.prop('dot')).toBe(false);
   });
 });

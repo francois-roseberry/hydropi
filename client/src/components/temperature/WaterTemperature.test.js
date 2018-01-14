@@ -6,7 +6,7 @@ import WaterTemperature from './WaterTemperature';
 describe('WaterTemperature control', () => {
   it('renders a SensorControl', () => {
     const wrapper = shallow(<WaterTemperature />);
-    const message = wrapper.find('Connect(SensorControl)');
-    expect(message.prop('title')).toBe('control.temperature.water.title');
+    const component = wrapper.find('Connect(SensorControl)');
+    expect(component.prop('title')).toBe('control.temperature.water.title');
   });
 });

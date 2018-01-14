@@ -35,8 +35,8 @@ setInterval(() => {
   airTemperatureNamespace.emit(EVENT_NEW_READING, { x: seconds, y: Math.random() * 10 + 20 });
 	waterTemperatureNamespace.emit(EVENT_NEW_READING, { x: seconds, y: Math.random() * 10 + 15 });
 	humidityNamespace.emit(EVENT_NEW_READING, { x: seconds, y: Math.random() * 10 + 60 });
-  seconds += 3;
-}, 3000);
+  seconds += 2;
+}, 2000);
 
 lightingNamespace.on('connection', socket => {
 	socket.emit(EVENT_NEW_STATE, lightingState);
