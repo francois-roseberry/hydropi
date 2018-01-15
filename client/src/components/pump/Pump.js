@@ -1,14 +1,14 @@
 import React from 'react';
 
 import ActuatorControl from '../../containers/actuator/ActuatorControl';
-import { setState, setMode } from '../../actions/lighting';
+import { setState, setMode } from '../../actions/pump';
 import { createActuatorSelector } from '../../selectors/actuator';
 
-export default class Lighting extends React.Component {
+export default class Pump extends React.Component {
   render() {
     return (<ActuatorControl
-      selector={ createActuatorSelector('lighting') }
+      selector={ createActuatorSelector('pump') }
       setState={ setState } setMode={ setMode }
-      title="control.lighting.title" />);
+      title="control.pump.water.title" />);
   }
 }

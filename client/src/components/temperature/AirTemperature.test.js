@@ -6,7 +6,7 @@ import AirTemperature from './AirTemperature';
 describe('AirTemperature control', () => {
   it('renders a SensorControl', () => {
     const wrapper = shallow(<AirTemperature />);
-    const message = wrapper.find('Connect(SensorControl)');
-    expect(message.prop('title')).toBe('control.temperature.air.title');
+    const component = wrapper.find('Connect(SensorControl)');
+    expect(component.prop('title')).toBe('control.temperature.air.title');
   });
 });

@@ -1,10 +1,14 @@
 import React from 'react';
 
 import ActuatorControl from '../../containers/actuator/ActuatorControl';
-import { selectIsActivated } from '../../selectors/ventilation';
+import { setState, setMode } from '../../actions/ventilation';
+import { createActuatorSelector } from '../../selectors/actuator';
 
 export default class Ventilation extends React.Component {
   render() {
-    return <ActuatorControl selectIsActivated={ selectIsActivated } title="control.ventilation.title" />;
+    return (<ActuatorControl
+      selector={ createActuatorSelector('ventilation') }
+      setState={ setState } setMode={ setMode }
+      title="control.ventilation.title" />);
   }
 }

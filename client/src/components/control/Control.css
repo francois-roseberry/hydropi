@@ -4,6 +4,10 @@
   padding: 10px;
 }
 
+.control span {
+  font-size: 1.1em;
+}
+
 .control-content {
   margin-top: 10px;
 }
