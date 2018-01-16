@@ -1,7 +1,7 @@
 # Hydropi (not yet finished)
 [![CircleCI](https://circleci.com/gh/francois-roseberry/hydropi/tree/development.svg?style=shield)](https://circleci.com/gh/francois-roseberry/hydropi/tree/development)
 
-Simple web app to control my hydroponic micro-culture. It runs on a Raspberry Pi Zero W with the resin.io image.
+Simple web app to control my hydroponic micro-culture. It runs on a [Raspberry Pi Zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) with the resin.io image.
 
 ## Stack
 Back-end is in Javascript, with [nodejs](https://nodejs.org/). Frontend is in Javascript, with [React](https://reactjs.org/).
