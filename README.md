@@ -1,8 +1,10 @@
 # Hydropi (not yet finished)
+[![CircleCI](https://circleci.com/gh/francois-roseberry/hydropi/tree/development.svg?style=shield)](https://circleci.com/gh/francois-roseberry/hydropi/tree/development)
+
 Simple web app to control my hydroponic micro-culture. It runs on a Raspberry Pi Zero W with the resin.io image.
 
 ## Stack
-Back-end is in javascript, with nodejs. Frontend is in Javascript, with React.
+Back-end is in Javascript, with [nodejs](https://nodejs.org/). Frontend is in Javascript, with [React](https://reactjs.org/).
 
 ## Workflow
 Code pushed to github, then -> tests run on CircleCI, if tests pass and on master branch, then -> Code push to resin.io, who build an ARM-compatible docker image, which then -> push to the Raspberry Pi
