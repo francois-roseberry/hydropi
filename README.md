@@ -18,6 +18,6 @@ Code pushed to github, then -> tests run on CircleCI, if tests pass and on maste
   * Water temperature ([DS18B20](https://www.amazon.ca/dp/B00KLZQ0P8/ref=pe_3034960_233709270_TE_item "Amazon.ca link"))
   * Air temperature and Humidity ([DHT22](https://www.amazon.ca/dp/B01MR7WEI9/ref=pe_3034960_236394800_FR_TE_3p_dp_1 "Amazon.ca link"))
 
-* Powered by a 350W ATX power supply extracted from an old PC
+* Powered by a 350W ATX power supply extracted from an old PC (which can supply both 5V and 12V. I know it offers way too much power, but I had it lying around)
 
 The micro-culture is inside an old PC case (emptied of course)
