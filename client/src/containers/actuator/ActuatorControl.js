@@ -19,11 +19,11 @@ class ActuatorControl extends React.Component {
 
   onModeToggle() {
     const newMode = this.props.mode === Modes.MANUAL ? Modes.AUTOMATIC : Modes.MANUAL;
-    this.props.setMode({ mode: newMode });
+    this.props.setMode({ socket: this.props.socket, mode: newMode });
   }
 
   onStateToggle() {
-    this.props.setState({ state: !this.props.value });
+    this.props.setState({ socket: this.props.socket, state: !this.props.value });
   }
 
   render() {
@@ -44,8 +44,10 @@ ActuatorControl.propTypes = {
     selectIsActivated: PropTypes.func.isRequired,
     selectMode: PropTypes.func.isRequired
   }).isRequired,
+  selectSocket: PropTypes.func.isRequired,
   setState: PropTypes.func.isRequired,
   setMode: PropTypes.func.isRequired,
+  socket: PropTypes.object,
   title: PropTypes.string.isRequired,
   value: PropTypes.bool.isRequired
 };
@@ -57,7 +59,8 @@ ActuatorControl.defaultProps = {
 
 export const mapStateToProps = (state, props) => ({
   value: props.selector.selectIsActivated(state),
-  mode: props.selector.selectMode(state)
+  mode: props.selector.selectMode(state),
+  socket: props.selectSocket(state)
 });
 
 export const mapDispatchToProps = (dispatch, props) => ({

@@ -10,11 +10,12 @@ describe('Actuator control', () => {
     selectIsActivated: jest.fn(),
     selectMode: jest.fn()
   };
+  const selectSocket = jest.fn();
   const setState = jest.fn();
   const setMode = jest.fn();
   const getWrapper = ({ value = false } = {}) =>
-    shallow(<ActuatorControl selector={ selector } setState={ setState } setMode={ setMode }
-      title={ TITLE } value={ value } />);
+    shallow(<ActuatorControl selector={ selector } selectSocket={ selectSocket } setState={ setState } setMode={ setMode }
+      socket={ {} } title={ TITLE } value={ value } />);
   const wrapper = getWrapper();
 
   beforeEach(setState.mockReset);
@@ -45,14 +46,14 @@ describe('Actuator control', () => {
     const component = wrapper.find('ModeToggle');
     component.simulate('toggle');
     expect(setMode).toHaveBeenCalledTimes(1);
-    expect(setMode).toHaveBeenCalledWith({ mode: Modes.AUTOMATIC });
+    expect(setMode).toHaveBeenCalledWith({ socket: {}, mode: Modes.AUTOMATIC });
   });
 
   it('set new state if state button is toggled', () => {
     const component = wrapper.find('.toggle-wrapper.state Toggle');
     component.simulate('toggle');
     expect(setState).toHaveBeenCalledTimes(1);
-    expect(setState).toHaveBeenCalledWith({ state: true });
+    expect(setState).toHaveBeenCalledWith({ socket: {}, state: true });
   });
 
   describe('mapDispatchToProps', () => {
