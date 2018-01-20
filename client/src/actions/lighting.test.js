@@ -17,7 +17,6 @@ describe('Lighting', () => {
     const mockServer = new Server(LIGHTING_SOCKET_NAMESPACE);
 
     mockServer.on('connection', s => {
-      console.log('MockServer : a client connected');
       socket = s;
       s.on(COMMAND_SET_STATE, state => {
         commands.push({ type: COMMAND_SET_STATE, state });
