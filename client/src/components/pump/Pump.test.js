@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Pump from './Pump';
-import { setState, setMode } from '../../actions/pump';
+import { setState, setMode } from '../../actions/actuator';
 import { selectPumpSocket } from '../../selectors/socket';
 
 describe('Pump control', () => {

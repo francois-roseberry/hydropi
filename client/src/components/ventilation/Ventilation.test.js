@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Ventilation from './Ventilation';
-import { setState, setMode } from '../../actions/ventilation';
+import { setState, setMode } from '../../actions/actuator';
 import { selectVentilationSocket } from '../../selectors/socket';
 
 describe('Ventilation control', () => {

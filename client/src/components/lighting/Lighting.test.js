@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Lighting from './Lighting';
-import { setState, setMode } from '../../actions/lighting';
+import { setState, setMode } from '../../actions/actuator';
 import { selectLightingSocket } from '../../selectors/socket';
 
 describe('Lighting control', () => {

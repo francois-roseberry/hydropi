@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ActuatorControl from '../../containers/actuator/ActuatorControl';
-import { setState, setMode } from '../../actions/ventilation';
+import { setState, setMode } from '../../actions/actuator';
 import { createActuatorSelector } from '../../selectors/actuator';
 import { selectVentilationSocket } from '../../selectors/socket';
 
