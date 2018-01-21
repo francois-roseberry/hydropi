@@ -2,10 +2,11 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import StateToggle from './StateToggle';
+import { States } from './states';
 
 describe('StateToggle', () => {
   const onToggle = jest.fn();
-  const getWrapper = ({ state = false } = {}) =>
+  const getWrapper = ({ state = States.OFF } = {}) =>
     shallow(<StateToggle state={ state } onToggle={ onToggle } />);
   const wrapper = getWrapper();
 
@@ -15,7 +16,7 @@ describe('StateToggle', () => {
   });
 
   it('toggles the button if told to', () => {
-    const component = getWrapper({ state: true }).find('.toggle-wrapper Toggle');
+    const component = getWrapper({ state: States.ON }).find('.toggle-wrapper Toggle');
     expect(component.prop('value')).toBe(true);
   });
 
@@ -23,6 +24,6 @@ describe('StateToggle', () => {
     const component = wrapper.find('.toggle-wrapper Toggle');
     component.simulate('toggle');
     expect(onToggle).toHaveBeenCalledTimes(1);
-    expect(onToggle).toHaveBeenCalledWith(true);
+    expect(onToggle).toHaveBeenCalledWith(States.ON);
   });
 });

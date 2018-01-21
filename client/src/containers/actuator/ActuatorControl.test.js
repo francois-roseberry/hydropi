@@ -3,18 +3,19 @@ import { shallow } from 'enzyme';
 
 import { ActuatorControl, mapDispatchToProps } from './ActuatorControl';
 import { Modes } from '../../components/actuator/modes';
+import { States } from '../../components/actuator/states';
 
 describe('Actuator control', () => {
   const TITLE = 'title';
   const selector = {
-    selectIsActivated: jest.fn(),
+    selectState: jest.fn(),
     selectMode: jest.fn()
   };
   const selectSocket = jest.fn();
   const setState = jest.fn();
   const setMode = jest.fn();
   const mode = Modes.MANUAL;
-  const state = false;
+  const state = States.OFF;
   const getWrapper = () =>
     shallow(<ActuatorControl mode={ mode } selector={ selector } selectSocket={ selectSocket } setState={ setState } setMode={ setMode }
       socket={ {} } title={ TITLE } state={ state } />);
@@ -36,22 +37,22 @@ describe('Actuator control', () => {
 
   it('renders a StateToggle', () => {
     const component = wrapper.find('StateToggle');
-    expect(component.prop('state')).toBe(false);
+    expect(component.prop('state')).toBe(States.OFF);
     expect(component.prop('onToggle')).toBeDefined();
   });
 
   it('set new mode if ModeToggle is toggled', () => {
     const component = wrapper.find('ModeToggle');
-    component.simulate('toggle');
+    component.simulate('toggle', Modes.AUTOMATIC);
     expect(setMode).toHaveBeenCalledTimes(1);
     expect(setMode).toHaveBeenCalledWith({ socket: {}, mode: Modes.AUTOMATIC });
   });
 
   it('set new state if StateToggle is toggled', () => {
     const component = wrapper.find('StateToggle');
-    component.simulate('toggle');
+    component.simulate('toggle', States.ON);
     expect(setState).toHaveBeenCalledTimes(1);
-    expect(setState).toHaveBeenCalledWith({ socket: {}, state: true });
+    expect(setState).toHaveBeenCalledWith({ socket: {}, state: States.ON });
   });
 
   describe('mapDispatchToProps', () => {
@@ -63,9 +64,9 @@ describe('Actuator control', () => {
     });
 
     it('should propagate args when setting state', () => {
-      dispatchProps.setState({ state: true });
+      dispatchProps.setState({ state: States.ON });
       expect(setState).toHaveBeenCalledTimes(1);
-      expect(setState).toHaveBeenCalledWith({ state: true });
+      expect(setState).toHaveBeenCalledWith({ state: States.ON });
     });
 
     it('should provide a method for setting mode', () => {

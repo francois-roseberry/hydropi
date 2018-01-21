@@ -4,6 +4,8 @@ import Toggle from 'react-toggle-button';
 import { FormattedMessage } from 'react-intl';
 import { bindAll } from 'lodash';
 
+import { States } from './states';
+
 import './StateToggle.css';
 
 export default class StateToggle extends React.Component {
@@ -14,7 +16,8 @@ export default class StateToggle extends React.Component {
   }
 
   onToggle() {
-    this.props.onToggle && this.props.onToggle(!this.props.state);
+    const newState = this.props.state === States.ON ? States.OFF : States.ON;
+    this.props.onToggle && this.props.onToggle(newState);
   }
 
   render() {
@@ -23,7 +26,7 @@ export default class StateToggle extends React.Component {
         <FormattedMessage id="control.actuator.state.label" />
         <div className="toggle-wrapper">
           <Toggle
-            value={ this.props.state } onToggle={ this.onToggle } />
+            value={ this.props.state === States.ON } onToggle={ this.onToggle } />
         </div>
       </div>
     );
@@ -31,10 +34,10 @@ export default class StateToggle extends React.Component {
 }
 
 StateToggle.propTypes = {
-  state: PropTypes.bool.isRequired,
+  state: PropTypes.oneOf([States.ON, States.OFF]).isRequired,
   onToggle: PropTypes.func
 };
 
 StateToggle.defaultProps = {
-  state: false
+  state: States.OFF
 };

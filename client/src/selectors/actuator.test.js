@@ -1,13 +1,14 @@
 import { createActuatorSelector } from './actuator';
 import { Modes } from '../components/actuator/modes';
+import { States } from '../components/actuator/states';
 
 describe('Actuator selector', () => {
   const selector = createActuatorSelector('actuator');
 
   it('returns activation state', () => {
-    const state = { actuator: { state: true } };
-    const activationState = selector.selectIsActivated(state);
-    expect(activationState).toBe(true);
+    const state = { actuator: { state: States.ON } };
+    const activationState = selector.selectState(state);
+    expect(activationState).toBe(States.ON);
   });
 
   it('returns mode', () => {
