@@ -22,6 +22,11 @@ const Modes = {
   MANUAL: 'manual'
 };
 
+const States = {
+  ON: 'on',
+  OFF: 'off'
+};
+
 app.use(express.static('client/build'));
 
 const airTemperatureNamespace = io.of(AIR_TEMPERATURE_SOCKET_NAMESPACE);
@@ -39,7 +44,7 @@ setInterval(() => {
 
 const actuator = (socketNamespace, name) => {
   const namespace = io.of(socketNamespace);
-  let stateObj = { state: true, mode: Modes.AUTOMATIC };
+  let stateObj = { state: States.ON, mode: Modes.MANUAL };
   namespace.on('connection', socket => {
     console.log('Sending initial', name, 'state :', stateObj.state);
   	socket.emit(EVENT_NEW_STATE, stateObj.state);

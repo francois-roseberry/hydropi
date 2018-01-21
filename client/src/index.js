@@ -19,8 +19,8 @@ import { init as initVentilationSocket } from './actions/ventilation.js';
 import { init as initPumpSocket } from './actions/pump.js';
 
 const configureStore = () => {
-  const createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
-  const store = createStoreWithMiddleware(reducers);
+  const appliedMiddleware = applyMiddleware(thunkMiddleware);
+  const store = createStore(reducers, appliedMiddleware);
   initAirTemperatureSocket(store);
   initWaterTemperatureSocket(store);
   initHumiditySocket(store);

@@ -1,22 +1,11 @@
-import io from 'socket.io-client';
-import { VENTILATION_NEW_STATE, VENTILATION_NEW_MODE } from './types';
-import { EVENT_NEW_STATE, EVENT_NEW_MODE, COMMAND_SET_STATE, COMMAND_SET_MODE, VENTILATION_SOCKET_NAMESPACE } from '../config/Api';
-
-const socket = io(VENTILATION_SOCKET_NAMESPACE);
+import { init as initActuator } from './actuator';
+import { SET_VENTILATION_SOCKET, VENTILATION_NEW_STATE, VENTILATION_NEW_MODE } from './types';
+import { VENTILATION_SOCKET_NAMESPACE } from '../config/Api';
 
 export const init = store => {
-  socket.on(EVENT_NEW_STATE, state => {
-    store.dispatch({ type: VENTILATION_NEW_STATE, state });
-  });
-  socket.on(EVENT_NEW_MODE, mode => {
-    store.dispatch({ type: VENTILATION_NEW_MODE, mode });
-  });
-};
-
-export const setState = ({ state }) => dispatch => {
-  socket.emit(COMMAND_SET_STATE, state);
-};
-
-export const setMode = ({ mode }) => dispatch => {
-  socket.emit(COMMAND_SET_MODE, mode);
+  return initActuator({ store, namespace: VENTILATION_SOCKET_NAMESPACE, actions: {
+    setSocket: SET_VENTILATION_SOCKET,
+    newState: VENTILATION_NEW_STATE,
+    newMode: VENTILATION_NEW_MODE
+  }});
 };

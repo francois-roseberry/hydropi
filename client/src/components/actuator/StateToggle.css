@@ -1,0 +1,13 @@
+.state {
+  text-align: left;
+  padding: 10px;
+}
+
+.state span {
+  font-size: 0.9em;
+}
+
+.state .toggle-wrapper {
+  display: inline-block;
+  float: right;
+}

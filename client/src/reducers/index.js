@@ -9,8 +9,10 @@ import {
   PUMP_NEW_STATE, PUMP_NEW_MODE } from '../actions/types';
 import { createActuatorReducer } from './actuator';
 import { createSensorReducer } from './sensor';
+import { socketReducer } from './socket';
 
 const rootReducer = combineReducers({
+  sockets: socketReducer,
   ventilation: createActuatorReducer(VENTILATION_NEW_STATE, VENTILATION_NEW_MODE),
   pump: createActuatorReducer(PUMP_NEW_STATE, PUMP_NEW_MODE),
   lighting: createActuatorReducer(LIGHTING_NEW_STATE, LIGHTING_NEW_MODE),

@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Toggle from 'react-toggle-button';
 import { bindAll } from 'lodash';
 
 import Control from '../../components/control/Control';
 import ModeToggle from '../../components/actuator/ModeToggle';
+import StateToggle from '../../components/actuator/StateToggle';
 import { Modes } from '../../components/actuator/modes';
-
-import './ActuatorControl.css';
+import { States } from '../../components/actuator/states';
 
 class ActuatorControl extends React.Component {
   constructor(props) {
@@ -17,22 +16,19 @@ class ActuatorControl extends React.Component {
     bindAll(this, ['onStateToggle', 'onModeToggle']);
   }
 
-  onModeToggle() {
-    const newMode = this.props.mode === Modes.MANUAL ? Modes.AUTOMATIC : Modes.MANUAL;
-    this.props.setMode({ mode: newMode });
+  onModeToggle(mode) {
+    this.props.setMode({ socket: this.props.socket, mode });
   }
 
-  onStateToggle() {
-    this.props.setState({ state: !this.props.value });
+  onStateToggle(state) {
+    this.props.setState({ socket: this.props.socket, state });
   }
 
   render() {
     return (
       <Control title={ this.props.title }>
-        <ModeToggle mode={ this.props.mode } onToggle={this.onModeToggle } />
-        <div className="toggle-wrapper state">
-          <Toggle value={ this.props.value } onToggle={ this.onStateToggle } />
-        </div>
+        <ModeToggle mode={ this.props.mode } onToggle={ this.onModeToggle } />
+        <StateToggle state={ this.props.state } onToggle={ this.onStateToggle } />
       </Control>
     );
   }
@@ -41,23 +37,26 @@ class ActuatorControl extends React.Component {
 ActuatorControl.propTypes = {
   mode: PropTypes.oneOf([Modes.MANUAL, Modes.AUTOMATIC]).isRequired,
   selector: PropTypes.shape({
-    selectIsActivated: PropTypes.func.isRequired,
+    selectState: PropTypes.func.isRequired,
     selectMode: PropTypes.func.isRequired
   }).isRequired,
+  selectSocket: PropTypes.func.isRequired,
   setState: PropTypes.func.isRequired,
   setMode: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
-  value: PropTypes.bool.isRequired
+  socket: PropTypes.object,
+  state: PropTypes.oneOf([States.ON, States.OFF]).isRequired,
+  title: PropTypes.string.isRequired
 };
 
 ActuatorControl.defaultProps = {
   mode: Modes.MANUAL,
-  value: false
+  state: States.OFF
 };
 
 export const mapStateToProps = (state, props) => ({
-  value: props.selector.selectIsActivated(state),
-  mode: props.selector.selectMode(state)
+  state: props.selector.selectState(state),
+  mode: props.selector.selectMode(state),
+  socket: props.selectSocket(state)
 });
 
 export const mapDispatchToProps = (dispatch, props) => ({
