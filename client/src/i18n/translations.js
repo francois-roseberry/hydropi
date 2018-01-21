@@ -6,6 +6,7 @@ export const translations = {
     'control.actuator.mode.automatic': 'AUTO',
     'control.actuator.mode.label' : 'Mode',
     'control.actuator.mode.manual': 'MANUAL',
+    'control.actuator.state.label': 'State',
 
     'control.humidity.title': 'Humidity',
     'control.temperature.air.title': 'Air Temperature',
