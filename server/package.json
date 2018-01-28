@@ -2,14 +2,10 @@
   "name": "hydropi",
   "version": "0.1.0",
   "description": "hydroponics controller web app",
-  "main": "./server/main.js",
+  "main": "index.js",
   "scripts": {
-    "start": "npm --prefix ./server start",
-    "test": "npm run client:test && npm run server:test",
-    "client:test": "cross-env CI=true npm --prefix ./client test",
-    "client:dependencies": "npm install --prefix ./client ./client",
-    "client:build": "npm --prefix ./client run build",
-    "server:test": "npm --prefix ./server test"
+    "start": "node ./main.js",
+    "test": "mocha --exit"
   },
   "repository": {
     "type": "git",
@@ -28,6 +24,12 @@
   },
   "homepage": "https://github.com/francois-roseberry/hydropi#readme",
   "dependencies": {
-    "cross-env": "^5.1.3"
+    "express": "^4.16.2",
+    "http": "0.0.0",
+    "socket.io": "^2.0.4"
+  },
+  "devDependencies": {
+    "mocha": "^5.0.0",
+    "socket.io-client": "^2.0.4"
   }
 }

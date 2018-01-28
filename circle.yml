@@ -21,6 +21,9 @@ jobs:
       - run:
           name: Running client tests
           command: npm run client:test
+      - run:
+          name: Running server tests
+          command: npm run server:test
       - save_cache:
           key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
           paths:
