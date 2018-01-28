@@ -5,6 +5,9 @@ jobs:
       - image: node:7.10
     working_directory: ~/hydropi
     steps:
+      - run
+          name: Install node-gyp dependencies (Python, GCC and Make)
+          command: apk add --no-cache python build-base # build base includes g++ and gcc and Make
       - checkout
       - restore_cache:
           key: client-deps-{{ .Branch }}-{{ checksum "client/package.json"}}
