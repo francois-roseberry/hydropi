@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: node:6.9.1-alpine
+      - image: node:7.10
     working_directory: ~/hydropi
     steps:
       - checkout
@@ -10,7 +10,7 @@ jobs:
           key: client-deps-{{ .Branch }}-{{ checksum "client/package.json"}}
       - run:
           name: Install node-gyp dependencies (Python, GCC and Make)
-          command: apk add --no-cache python build-base # build base includes g++ and gcc and Make
+          command: apt-get install python build-base # build base includes g++ and gcc and Make
       - run:
           name: Installing common dependencies
           command: npm install
