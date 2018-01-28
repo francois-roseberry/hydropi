@@ -9,8 +9,11 @@ jobs:
       - restore_cache:
           key: client-deps-{{ .Branch }}-{{ checksum "client/package.json"}}
       - run:
-          name: Installing server dependencies
+          name: Installing common dependencies
           command: npm install
+      - run:
+          name: Installing server dependencies
+          command: npm run server:dependencies
       - run:
           name: Installing client dependencies
           command: npm run client:dependencies

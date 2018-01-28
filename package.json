@@ -7,9 +7,10 @@
     "start": "npm --prefix ./server start",
     "test": "npm run client:test && npm run server:test",
     "client:test": "cross-env CI=true npm --prefix ./client test",
-    "client:dependencies": "npm install --prefix ./client ./client",
+    "client:dependencies": "npm --prefix ./client install ./client",
     "client:build": "npm --prefix ./client run build",
-    "server:test": "npm --prefix ./server test"
+    "server:test": "npm --prefix ./server test",
+    "server:dependencies": "npm --prefix ./server install ./server"
   },
   "repository": {
     "type": "git",
