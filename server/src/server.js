@@ -14,6 +14,9 @@ const EVENT_NEW_READING = require('./api').EVENT_NEW_READING;
 const LIGHTING_SOCKET_NAMESPACE = '/lighting';
 const VENTILATION_SOCKET_NAMESPACE = '/ventilation';
 const PUMP_SOCKET_NAMESPACE = '/pump';
+const LIGHTING_PIN = require('./config').LIGHTING_PIN;
+const VENTILATION_PIN = require('./config').VENTILATION_PIN;
+const PUMP_PIN = require('./config').PUMP_PIN;
 
 const airTemperatureNamespace = io.of(AIR_TEMPERATURE_SOCKET_NAMESPACE);
 const waterTemperatureNamespace = io.of(WATER_TEMPERATURE_SOCKET_NAMESPACE);
@@ -28,9 +31,9 @@ setInterval(() => {
   seconds += 2;
 }, 2000);
 
-actuator(LIGHTING_SOCKET_NAMESPACE, 'lighting');
-actuator(VENTILATION_SOCKET_NAMESPACE, 'ventilation');
-actuator(PUMP_SOCKET_NAMESPACE, 'pump');
+actuator(LIGHTING_SOCKET_NAMESPACE, 'lighting', LIGHTING_PIN);
+actuator(VENTILATION_SOCKET_NAMESPACE, 'ventilation', VENTILATION_PIN);
+actuator(PUMP_SOCKET_NAMESPACE, 'pump', PUMP_PIN);
 
 app.use(express.static('../client/build'));
 
