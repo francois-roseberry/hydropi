@@ -8,7 +8,12 @@ const States = require('./states');
 const Modes = require('./modes');
 
 const actuator = io => (socketNamespace, name, pinNumber) => {
+  let pin;
   const namespace = io.of(socketNamespace);
+  if (ON_DEVICE) {
+    pin = require("pi-pins").connect(pinNumber);
+    console.log('On device, conecting to gpio', pinNumber);
+  }
 
   let stateObj = { state: States.OFF, mode: Modes.MANUAL };
   namespace.on('connection', socket => {
@@ -19,9 +24,8 @@ const actuator = io => (socketNamespace, name, pinNumber) => {
     socket.on(COMMAND_SET_STATE, state => {
       stateObj.state = state;
       if (ON_DEVICE) {
-        var pin = require("pi-pins").connect(pinNumber);
         const signal = state === States.ON ? 'high' : 'low';
-        console.log('On device, setting pin', pinNumber, 'to', signal);
+        console.log('On device, setting gpio', pinNumber, 'to', signal);
         pin.mode(signal);
       } else {
         console.log('Not on device, doing nothing');
