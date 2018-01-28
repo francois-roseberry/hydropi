@@ -9,8 +9,11 @@ jobs:
       - restore_cache:
           key: client-deps-{{ .Branch }}-{{ checksum "client/package.json"}}
       - run:
-          name: Installing server dependencies
+          name: Installing common dependencies
           command: npm install
+      - run:
+          name: Installing server dependencies
+          command: npm run server:dependencies
       - run:
           name: Installing client dependencies
           command: npm run client:dependencies
@@ -21,6 +24,9 @@ jobs:
       - run:
           name: Running client tests
           command: npm run client:test
+      - run:
+          name: Running server tests
+          command: npm run server:test
       - save_cache:
           key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
           paths:
