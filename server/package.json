@@ -26,6 +26,7 @@
   "dependencies": {
     "express": "^4.16.2",
     "http": "0.0.0",
+    "pi-pins": "^1.0.2",
     "socket.io": "^2.0.4"
   },
   "devDependencies": {
