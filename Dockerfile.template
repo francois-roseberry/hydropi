@@ -2,7 +2,7 @@
 # see more about dockerfile templates here: http://docs.resin.io/deployment/docker-templates/
 # and about resin base images here: http://docs.resin.io/runtime/resin-base-images/
 # Note the node:slim image doesn't have node-gyp
-FROM resin/%%RESIN_MACHINE_NAME%%-node:9
+FROM resin/%%RESIN_MACHINE_NAME%%-node:6
 
 # use apt-get if you need to install dependencies,
 # for instance if you need ALSA sound utils, just uncomment the lines below.
@@ -23,9 +23,9 @@ COPY client/package.json client/package.json
 
 # This install npm dependencies on the resin.io build server,
 # making sure to clean up the artifacts it creates in order to reduce the image size.
-RUN JOBS=MAX npm install --production --unsafe-perm && rm -rf /tmp/*
-RUN JOBS=MAX npm install --prefix ./server --production --unsafe-perm ./server && rm -rf /tmp/*
-RUN JOBS=MAX npm install --prefix ./client --production --unsafe-perm ./client && rm -rf /tmp/*
+RUN JOBS=MAX npm install --production --unsafe-perm && npm cache clean && rm -rf /tmp/*
+RUN JOBS=MAX npm install --prefix ./server --production --unsafe-perm ./server && npm cache clean && rm -rf /tmp/*
+RUN JOBS=MAX npm install --prefix ./client --production --unsafe-perm ./client && npm cache clean && rm -rf /tmp/*
 
 # This will copy all files in our root to the working  directory in the container
 COPY . ./
