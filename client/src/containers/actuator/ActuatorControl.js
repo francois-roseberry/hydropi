@@ -9,7 +9,7 @@ import StateToggle from '../../components/actuator/StateToggle';
 import { Modes } from '../../components/actuator/modes';
 import { States } from '../../components/actuator/states';
 
-class ActuatorControl extends React.Component {
+export class ActuatorControl extends React.Component {
   constructor(props) {
     super(props);
 
@@ -64,5 +64,4 @@ export const mapDispatchToProps = (dispatch, props) => ({
   setMode: (...args) => dispatch(props.setMode(...args))
 });
 
-export { ActuatorControl };
 export default connect(mapStateToProps, mapDispatchToProps)(ActuatorControl);

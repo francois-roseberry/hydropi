@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Control from '../../components/control/Control';
 import Chart from '../../components/chart/Chart'
 
-class SensorControl extends React.Component {
+export class SensorControl extends React.Component {
   render() {
     return (
       <Control title={ this.props.title }>
@@ -32,5 +32,4 @@ export const mapStateToProps = (state, props) => ({
   data: props.selectData(state)
 });
 
-export { SensorControl };
 export default connect(mapStateToProps, null)(SensorControl);
