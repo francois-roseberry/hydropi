@@ -28,8 +28,8 @@ setInterval(() => {
   airTemperatureNamespace.emit(EVENT_NEW_READING, { x: seconds, y: Math.random() * 10 + 20 });
 	waterTemperatureNamespace.emit(EVENT_NEW_READING, { x: seconds, y: Math.random() * 10 + 15 });
 	humidityNamespace.emit(EVENT_NEW_READING, { x: seconds, y: Math.random() * 10 + 60 });
-  seconds += 2;
-}, 2000);
+  seconds += 1;
+}, 1000);
 
 actuator(LIGHTING_SOCKET_NAMESPACE, 'lighting', LIGHTING_PIN);
 actuator(VENTILATION_SOCKET_NAMESPACE, 'ventilation', VENTILATION_PIN);
