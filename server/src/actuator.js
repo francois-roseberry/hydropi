@@ -2,6 +2,8 @@ const EVENT_NEW_STATE = require('./api').EVENT_NEW_STATE;
 const EVENT_NEW_MODE = require('./api').EVENT_NEW_MODE;
 const COMMAND_SET_STATE = require('./api').COMMAND_SET_STATE;
 const COMMAND_SET_MODE = require('./api').COMMAND_SET_MODE;
+const INITIAL_ACTUATOR_STATE = require('./api').INITIAL_ACTUATOR_STATE;
+const INITIAL_ACTUATOR_MODE = require('./api').INITIAL_ACTUATOR_MODE;
 const ON_DEVICE = require('./config').ON_DEVICE;
 
 const States = require('./states');
@@ -15,7 +17,7 @@ const actuator = io => (socketNamespace, name, pinNumber) => {
     console.log('On device, connecting to gpio', pinNumber);
   }
 
-  let stateObj = { state: States.OFF, mode: Modes.MANUAL };
+  let stateObj = { state: INITIAL_ACTUATOR_STATE, mode: INITIAL_ACTUATOR_MODE };
   namespace.on('connection', socket => {
     console.log('Sending initial', name, 'state :', stateObj.state);
   	socket.emit(EVENT_NEW_STATE, stateObj.state);

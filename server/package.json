@@ -4,7 +4,7 @@
   "description": "hydroponics controller web app",
   "main": "index.js",
   "scripts": {
-    "start": "node ./main.js",
+    "start": "modprobe w1-gpio && modprobe w1-therm && node index.js",
     "test": "mocha --exit"
   },
   "repository": {
@@ -24,12 +24,14 @@
   },
   "homepage": "https://github.com/francois-roseberry/hydropi#readme",
   "dependencies": {
+    "ds18x20": "^0.2.0",
     "express": "^4.16.2",
     "http": "0.0.0",
     "pi-pins": "^1.0.2",
     "socket.io": "^2.0.4"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
     "mocha": "^5.0.0",
     "socket.io-client": "^2.0.4"
   }
