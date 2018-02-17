@@ -4,6 +4,7 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
 const actuator = require('./actuator')(io);
+const sensor = require('./sensor_ds18b20')();
 
 const PORT = require('./config').PORT;
 const AIR_TEMPERATURE_SOCKET_NAMESPACE = '/airTemperature';
@@ -26,7 +27,7 @@ const humidityNamespace = io.of(HUMIDITY_SOCKET_NAMESPACE);
 let seconds = 0;
 setInterval(() => {
   airTemperatureNamespace.emit(EVENT_NEW_READING, { x: seconds, y: Math.random() * 10 + 20 });
-	waterTemperatureNamespace.emit(EVENT_NEW_READING, { x: seconds, y: Math.random() * 10 + 15 });
+	waterTemperatureNamespace.emit(EVENT_NEW_READING, { x: seconds, y: sensor.read() });
 	humidityNamespace.emit(EVENT_NEW_READING, { x: seconds, y: Math.random() * 10 + 60 });
   seconds += 1;
 }, 1000);
