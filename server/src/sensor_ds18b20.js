@@ -11,7 +11,8 @@ const initSensor = () => {
       console.log('on device, driver is loaded for ds18x20');
       const sensorIds = sensor.list();
       console.log('ds18x20 sensors connected :', sensorIds);
-      sensorId = sensorIds[0];
+      console.log('skipping the first one');
+      sensorId = sensorIds[1];
     } else {
       console.log('on device, driver is not loaded for ds18x20');
     }
