@@ -4,7 +4,7 @@
   "description": "hydroponics controller web app",
   "main": "index.js",
   "scripts": {
-    "start": "modprobe w1-gpio && modprobe w1-therm && node index.js",
+    "start": "sudo modprobe w1-gpio && sudo modprobe w1-therm && sudo node index.js",
     "test": "mocha --exit"
   },
   "repository": {
