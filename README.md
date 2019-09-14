@@ -1,7 +1,7 @@
 # Hydropi (not yet finished)
 [![CircleCI](https://circleci.com/gh/francois-roseberry/hydropi/tree/development.svg?style=shield)](https://circleci.com/gh/francois-roseberry/hydropi/tree/development)
 
-Simple web app to control my hydroponic micro-culture. It runs on a [Raspberry Pi Zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) with the [resin.io](https://resin.io/) image.
+Simple web app to control my hydroponic micro-culture. It runs on a [Raspberry Pi Zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) with the [balena.io](https://balena.io/) image.
 
 ## Stack
 Back-end is in Javascript, with [nodejs](https://nodejs.org/). Frontend is in Javascript, with [React](https://reactjs.org/).
@@ -11,7 +11,7 @@ Code pushed to github, then -> tests run on CircleCI, if tests pass and on maste
 
 ## Components (electronics)
 * 3 actuators:
-  * Fans (2 PC fans I got from an old PC)
+  * Fans (1 PC fans I got from an old PC)
   * Grow light ([USB LED Grow light](https://www.amazon.ca/dp/B0785DRTDH/ref=pe_3034960_236394800_FR_TE_3p_dp_1 "Amazon.ca link"))
   * Air pump ([Aquarium-style 12V diaphragm air pump](https://www.amazon.ca/dp/B00MP4BKL2/ref=pe_3034960_236394800_FR_TE_3p_dp_1 "Amazon.ca link"))
 * 3 sensors (actually just 2, but 1 acts as 2):
