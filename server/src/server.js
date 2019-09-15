@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+var cron = require('node-cron');
 
 const actuator = require('./actuator')(io);
 //const sensor = require('./sensor_ds18b20')();
@@ -32,9 +33,19 @@ setInterval(() => {
   seconds += 1;
 }, 1000);
 
-actuator(LIGHTING_SOCKET_NAMESPACE, 'lighting', LIGHTING_PIN);
+const light = actuator(LIGHTING_SOCKET_NAMESPACE, 'lighting', LIGHTING_PIN);
 actuator(VENTILATION_SOCKET_NAMESPACE, 'ventilation', VENTILATION_PIN);
 actuator(PUMP_SOCKET_NAMESPACE, 'pump', PUMP_PIN);
+
+cron.schedule('* * 6 * *', () => {
+  console.log('turning on light at 6');
+  light.activate();
+});
+
+cron.schedule('* * 22 * *', () => {
+  console.log('turning off light at 22');
+  light.deactivate();
+});
 
 app.use(express.static('../client/build'));
 
