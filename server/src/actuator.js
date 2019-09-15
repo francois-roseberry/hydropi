@@ -18,8 +18,10 @@ const actuator = io => (socketNamespace, name, pinNumber) => {
     console.log('On device, connecting to gpio', pinNumber);
   }
 
+  let websocket = null;
   let stateObj = { state: INITIAL_ACTUATOR_STATE, mode: INITIAL_ACTUATOR_MODE };
   namespace.on('connection', socket => {
+    websocket = socket;
     console.log('Sending initial', name, 'state :', stateObj.state);
   	socket.emit(EVENT_NEW_STATE, stateObj.state);
     console.log('Sending initial', name, 'mode :', stateObj.mode);
@@ -42,6 +44,37 @@ const actuator = io => (socketNamespace, name, pinNumber) => {
       namespace.emit(EVENT_NEW_MODE, stateObj.mode);
     });
   });
+
+  return {
+    activate: () => {
+      console.log(activating);
+      if (websocket != null) {
+        stateObj.state = States.ON;
+        if (ON_DEVICE) {
+          const signal = state === States.ON ? true : false;
+          console.log('On device, setting gpio', pinNumber, 'to', signal);
+          pin.value(signal);
+        } else {
+          console.log('Not on device, doing nothing');
+        }
+        console.log('Sending new', name, 'state :', stateObj.state);
+        namespace.emit(EVENT_NEW_STATE, stateObj.state);
+      }
+    },
+    deactivate: () => {
+      console.log('deactivating');
+      stateObj.state = States.OFF;
+      if (ON_DEVICE) {
+        const signal = state === States.ON ? true : false;
+        console.log('On device, setting gpio', pinNumber, 'to', signal);
+        pin.value(signal);
+      } else {
+        console.log('Not on device, doing nothing');
+      }
+      console.log('Sending new', name, 'state :', stateObj.state);
+      namespace.emit(EVENT_NEW_STATE, stateObj.state);
+    }
+  };
 };
 
 module.exports = actuator;
