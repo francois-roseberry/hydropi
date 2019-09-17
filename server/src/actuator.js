@@ -47,7 +47,7 @@ const actuator = io => (socketNamespace, name, pinNumber) => {
 
   return {
     activate: () => {
-      console.log(activating);
+      console.log('activating');
       if (websocket != null) {
         stateObj.state = States.ON;
         if (ON_DEVICE) {
