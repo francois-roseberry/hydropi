@@ -47,6 +47,11 @@ cron.schedule('* * 22 * *', () => {
   light.deactivate();
 });
 
+// Keep-alive task
+setInterval(() => {
+  console.log('Keep-alive task running every 5 sec');
+}, 5000);
+
 app.use(express.static('../client/build'));
 
 module.exports = http;
