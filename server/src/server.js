@@ -3,6 +3,7 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 var cron = require('node-cron');
+var moment = require('moment');
 
 const actuator = require('./actuator')(io);
 //const sensor = require('./sensor_ds18b20')();
@@ -50,6 +51,7 @@ cron.schedule('* * 22 * *', () => {
 // Keep-alive task
 setInterval(() => {
   console.log('Keep-alive task running every 5 sec');
+  console.log('Tiime is ' + moment().format('H:mm:ss'));
 }, 5000);
 
 app.use(express.static('../client/build'));
