@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-var cron = require('node-cron');
+var schedule = require('node-schedule');
 var moment = require('moment');
 
 const actuator = require('./actuator')(io);
@@ -38,20 +38,20 @@ const light = actuator(LIGHTING_SOCKET_NAMESPACE, 'lighting', LIGHTING_PIN);
 actuator(VENTILATION_SOCKET_NAMESPACE, 'ventilation', VENTILATION_PIN);
 actuator(PUMP_SOCKET_NAMESPACE, 'pump', PUMP_PIN);
 
-cron.schedule('* * 6 * *', () => {
-  console.log('turning on light at 6');
+schedule.scheduleJob('* 6 * * *', () => {
+  console.log('Turning on light at hour 6');
+  console.log('Time is ' + moment().format('H:mm:ss'));
   light.activate();
 });
 
-cron.schedule('* * 22 * *', () => {
-  console.log('turning off light at 22');
+schedule.scheduleJob('* 22 * * *', () => {
+  console.log('Turning off light at hour 22');
+  console.log('Time is ' + moment().format('H:mm:ss'));
   light.deactivate();
 });
 
-// Keep-alive task
 setInterval(() => {
-  console.log('Keep-alive task running every 5 sec');
-  console.log('Tiime is ' + moment().format('H:mm:ss'));
+  // Do nothing, just keep process alive
 }, 5000);
 
 app.use(express.static('../client/build'));
