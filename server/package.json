@@ -24,16 +24,16 @@
   },
   "homepage": "https://github.com/francois-roseberry/hydropi#readme",
   "dependencies": {
-    "ds18x20": "^0.2.0",
-    "express": "^4.16.2",
+    "ds18x20": "0.2.0",
+    "express": "4.16.2",
     "http": "0.0.0",
-    "node-cron": "^2.0.3",
-    "pi-pins": "^1.0.2",
-    "socket.io": "^2.0.4"
+    "node-cron": "2.0.3",
+    "pi-pins": "1.0.2",
+    "socket.io": "2.0.4"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
-    "mocha": "^5.0.0",
-    "socket.io-client": "^2.0.4"
+    "chai": "4.1.2",
+    "mocha": "5.0.0",
+    "socket.io-client": "2.0.4"
   }
 }
