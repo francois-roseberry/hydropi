@@ -51,7 +51,7 @@ const actuator = io => (socketNamespace, name, pinNumber) => {
       if (websocket != null) {
         stateObj.state = States.ON;
         if (ON_DEVICE) {
-          const signal = state === States.ON ? true : false;
+          const signal = stateObj.state === States.ON ? true : false;
           console.log('On device, setting gpio', pinNumber, 'to', signal);
           pin.value(signal);
         } else {
@@ -63,16 +63,18 @@ const actuator = io => (socketNamespace, name, pinNumber) => {
     },
     deactivate: () => {
       console.log('deactivating');
-      stateObj.state = States.OFF;
-      if (ON_DEVICE) {
-        const signal = state === States.ON ? true : false;
-        console.log('On device, setting gpio', pinNumber, 'to', signal);
-        pin.value(signal);
-      } else {
-        console.log('Not on device, doing nothing');
+      if (websocket != null) {
+        stateObj.state = States.OFF;
+        if (ON_DEVICE) {
+          const signal = stateObj.state === States.ON ? true : false;
+          console.log('On device, setting gpio', pinNumber, 'to', signal);
+          pin.value(signal);
+        } else {
+          console.log('Not on device, doing nothing');
+        }
+        console.log('Sending new', name, 'state :', stateObj.state);
+        namespace.emit(EVENT_NEW_STATE, stateObj.state);
       }
-      console.log('Sending new', name, 'state :', stateObj.state);
-      namespace.emit(EVENT_NEW_STATE, stateObj.state);
     }
   };
 };
