@@ -41,6 +41,21 @@ const actuatorTest = socketNamespace => () => {
     expect(currentMode).to.eql(INITIAL_ACTUATOR_MODE);
   });
 
+  describe('when setting new state', () => {
+    before(() => {
+      client.emit('state', 'on');
+    });
+
+    it('receives back the new state', () => {
+      expect(currentState).to.eql('on');
+    });
+
+    after(() => {
+      // reset the state
+      client.emit('state', 'off');
+    });
+  });
+
   after(() => {
     client.disconnect();
   });
