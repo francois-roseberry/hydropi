@@ -19,7 +19,7 @@
     "socket.io-client": "2.1.1"
   },
   "scripts": {
-    "start": "concurrently \"node ../server/main.js\" \"react-scripts start\"",
+    "start": "concurrently \"node ../server/index.js\" \"react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
