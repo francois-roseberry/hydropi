@@ -36,7 +36,7 @@ jobs:
             - ~/hydropi
   deploy:
     docker:
-      - image: node:7.10
+      - image: circleci/node:8.10
     working_directory: ~/hydropi
     steps:
       - restore_cache:
