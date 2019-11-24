@@ -41,9 +41,6 @@ jobs:
     steps:
       - restore_cache:
           key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
-      - add_ssh_keys:
-          fingerprints:
-            - "62:99:7c:02:c8:94:3a:c1:1d:30:8f:25:ba:ae:95:8a"
       - run:
           name: Install node-gyp dependencies (Python, GCC and Make)
           command: apt-get install python make gcc
@@ -53,8 +50,7 @@ jobs:
       - run:
           name : Deploy to Balena.io
           command: |
-            #cat resinkey >> ~/.ssh/known_hosts
-            balena login --token $BALENA_API_TOKEN
+            balena login --token $BALENA_API_TOKEN # Env variable stored in CircleCI
             balena push hydropi
 workflows:
   version: 2
