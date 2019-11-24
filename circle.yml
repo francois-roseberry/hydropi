@@ -53,11 +53,9 @@ jobs:
       - run:
           name : Deploy to Balena.io
           command: |
-            cat resinkey >> ~/.ssh/known_hosts
-            balena login --token  "oDR9VLoeL8Gxi3oI4uryfZZ04sIqC3S7"
+            #cat resinkey >> ~/.ssh/known_hosts
+            balena login --token $BALENA_API_TOKEN
             balena push hydropi
-            #git remote add resin gh_francois_roseberry@git.resin.io:gh_francois_roseberry/hydropi.git
-            #git push resin master
 workflows:
   version: 2
   build-deploy:
