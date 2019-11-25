@@ -1,14 +1,8 @@
-# base-image for node on any machine using a template variable,
-# see more about dockerfile templates here: http://docs.resin.io/deployment/docker-templates/
-# and about resin base images here: http://docs.resin.io/runtime/resin-base-images/
-# Note the node:slim image doesn't have node-gyp
-FROM balenalib/%%BALENA_MACHINE_NAME%%-node:6
+# See more about dockerfile templates here: https://www.balena.io/docs/learn/develop/dockerfile/
+# and about balena base images here: https://www.balena.io/docs/reference/base-images/base-images/
 
-# use apt-get if you need to install dependencies,
-# for instance if you need ALSA sound utils, just uncomment the lines below.
-#RUN apt-get update && apt-get install -yq \
-#    alsa-utils libasound2-dev && \
-#    apt-get clean && rm -rf /var/lib/apt/lists/*
+# https://hub.docker.com/r/balenalib/raspberry-pi-node
+FROM balenalib/%%BALENA_MACHINE_NAME%%-node:6
 
 # Install node-gyp dependencies (Python, G++ and Make)
 RUN apt-get update && apt-get install -y python make g++
@@ -32,9 +26,6 @@ COPY . ./
 
 # Build the client App
 RUN JOBS=MAX npm run client:build
-
-# This was done in the old resin images, not sure if needs to be done anymore : Enable systemd init system in container
-# ENV INITSYSTEM on
 
 # Enable udevd so that plugged dynamic hardware devices show up in our container.
 ENV UDEV=1
