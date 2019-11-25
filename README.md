@@ -1,5 +1,5 @@
 # Hydropi
-[![CircleCI](https://circleci.com/gh/francois-roseberry/hydropi/tree/development.svg?style=shield)](https://circleci.com/gh/francois-roseberry/hydropi/tree/development)
+[![CircleCI](https://circleci.com/gh/francois-roseberry/hydropi/tree/master.svg?style=shield)](https://circleci.com/gh/francois-roseberry/hydropi/tree/master)
 
 Simple web app to control my hydroponic micro-culture. It runs on a [Raspberry Pi Zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) with the [balena.io](https://balena.io/) image.
 
@@ -9,7 +9,7 @@ Simple web app to control my hydroponic micro-culture. It runs on a [Raspberry P
 Back-end is in Javascript, with [nodejs](https://nodejs.org/). Frontend is in Javascript, with [React](https://reactjs.org/).
 
 ## Workflow
-Code pushed to github, then -> tests run on CircleCI, if tests pass and on master branch, then -> Code push to balena.io, who build an ARM-compatible docker image, which then -> push to the Raspberry Pi
+Code pushed to github, then -> tests run on CircleCI, if tests pass and on master branch, then -> Code push to balena.io, which build an ARM-compatible docker image,  then -> push to the Raspberry Pi
 
 ## Components (electronics)
 * 3 actuators:
