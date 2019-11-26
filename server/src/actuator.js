@@ -5,6 +5,7 @@ const COMMAND_SET_MODE = require('./api').COMMAND_SET_MODE;
 const INITIAL_ACTUATOR_STATE = require('./api').INITIAL_ACTUATOR_STATE;
 const INITIAL_ACTUATOR_MODE = require('./api').INITIAL_ACTUATOR_MODE;
 const ON_DEVICE = require('./config').ON_DEVICE;
+const log = require('debug')('hydropi');
 
 const States = require('./states');
 const Modes = require('./modes');
@@ -18,38 +19,38 @@ const actuator = io => (socketNamespace, name, pinNumber) => {
   if (ON_DEVICE) {
     pin = require("pi-pins").connect(pinNumber);
     pin.mode('out');
-    console.log('On device, connecting to gpio', pinNumber);
+    log('On device, connecting to gpio', pinNumber);
   }
 
   const setState = state => {
-    console.log('Setting state to ', state);
+    log('Setting state to ', state);
     stateObj.state = state;
     if (ON_DEVICE) {
       const signal = stateObj.state === States.ON ? true : false;
-      console.log('On device, setting gpio', pinNumber, 'to', signal);
+      log('On device, setting gpio', pinNumber, 'to', signal);
       pin.value(signal);
     } else {
-      console.log('Not on device, doing nothing');
+      log('Not on device, doing nothing');
     }
 
     if (websocket != null) {
-      console.log('Sending new', name, 'state :', stateObj.state);
+      log('Sending new', name, 'state :', stateObj.state);
       namespace.emit(EVENT_NEW_STATE, stateObj.state);
     }
   }
 
   namespace.on('connection', socket => {
     websocket = socket;
-    console.log('Sending initial', name, 'state :', stateObj.state);
+    log('Sending initial', name, 'state :', stateObj.state);
   	socket.emit(EVENT_NEW_STATE, stateObj.state);
-    console.log('Sending initial', name, 'mode :', stateObj.mode);
+    log('Sending initial', name, 'mode :', stateObj.mode);
     socket.emit(EVENT_NEW_MODE, stateObj.mode);
     socket.on(COMMAND_SET_STATE, state => {
       setState(state);
     });
     socket.on(COMMAND_SET_MODE, mode => {
       stateObj.mode = mode;
-      console.log('Sending new', name, 'mode :', stateObj.mode);
+      log('Sending new', name, 'mode :', stateObj.mode);
       namespace.emit(EVENT_NEW_MODE, stateObj.mode);
     });
   });

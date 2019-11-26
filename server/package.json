@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/francois-roseberry/hydropi#readme",
   "dependencies": {
+    "debug": "4.1.1",
     "ds18x20": "0.2.0",
     "express": "4.17.1",
     "http": "0.0.0",

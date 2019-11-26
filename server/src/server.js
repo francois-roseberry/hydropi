@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-var schedule = require('node-schedule');
-var moment = require('moment');
+const schedule = require('node-schedule');
+const moment = require('moment');
+const log = require('debug')('hydropi');
 
 const actuator = require('./actuator')(io);
 //const sensor = require('./sensor_ds18b20')();
@@ -39,14 +40,14 @@ actuator(VENTILATION_SOCKET_NAMESPACE, 'ventilation', VENTILATION_PIN);
 actuator(PUMP_SOCKET_NAMESPACE, 'pump', PUMP_PIN);
 
 schedule.scheduleJob('* 6 * * *', () => {
-  console.log('Turning on light at hour 6');
-  console.log('Time is ' + moment().format('H:mm:ss'));
+  log('Turning on light at hour 6');
+  log('Time is ' + moment().format('H:mm:ss'));
   light.activate();
 });
 
 schedule.scheduleJob('* 22 * * *', () => {
-  console.log('Turning off light at hour 22');
-  console.log('Time is ' + moment().format('H:mm:ss'));
+  log('Turning off light at hour 22');
+  log('Time is ' + moment().format('H:mm:ss'));
   light.deactivate();
 });
 
