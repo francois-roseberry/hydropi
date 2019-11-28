@@ -29,6 +29,6 @@
   },
   "homepage": "https://github.com/francois-roseberry/hydropi#readme",
   "dependencies": {
-    "cross-env": "5.2.1"
+    "cross-env": "6.0.3"
   }
 }
