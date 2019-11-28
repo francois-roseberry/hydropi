@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: node:7.10
+      - image: node:8.10
     working_directory: ~/hydropi
     steps:
       - checkout
