@@ -2,7 +2,7 @@
 # and about balena base images here: https://www.balena.io/docs/reference/base-images/base-images/
 
 # https://hub.docker.com/r/balenalib/raspberry-pi-node
-FROM balenalib/%%BALENA_MACHINE_NAME%%-node:6
+FROM balenalib/%%BALENA_MACHINE_NAME%%-node:8
 
 # Install node-gyp dependencies (Python, G++ and Make)
 RUN apt-get update && apt-get install -y python make g++
@@ -17,9 +17,9 @@ COPY client/package.json client/package.json
 
 # This install npm dependencies on the resin.io build server,
 # making sure to clean up the artifacts it creates in order to reduce the image size.
-RUN JOBS=MAX npm install --production --unsafe-perm && npm cache clean && rm -rf /tmp/*
-RUN JOBS=MAX npm install --prefix ./server --production --unsafe-perm ./server && npm cache clean && rm -rf /tmp/*
-RUN JOBS=MAX npm install --prefix ./client --production --unsafe-perm ./client && npm cache clean && rm -rf /tmp/*
+RUN JOBS=MAX npm install --production --unsafe-perm && rm -rf /tmp/*
+RUN JOBS=MAX npm install --prefix ./server --production --unsafe-perm ./server && rm -rf /tmp/*
+RUN JOBS=MAX npm install --prefix ./client --production --unsafe-perm ./client && rm -rf /tmp/*
 
 # This will copy all files in our root to the working  directory in the container
 COPY . ./
