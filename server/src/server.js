@@ -2,9 +2,6 @@ const express = require('express');
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-const schedule = require('node-schedule');
-const moment = require('moment');
-const log = require('debug')('hydropi');
 
 const actuator = require('./actuator')(io);
 //const sensor = require('./sensor_ds18b20')();
@@ -35,21 +32,9 @@ setInterval(() => {
   seconds += 1;
 }, 1000);
 
-const light = actuator(LIGHTING_SOCKET_NAMESPACE, 'lighting', LIGHTING_PIN);
+actuator(LIGHTING_SOCKET_NAMESPACE, 'lighting', LIGHTING_PIN);
 actuator(VENTILATION_SOCKET_NAMESPACE, 'ventilation', VENTILATION_PIN);
 actuator(PUMP_SOCKET_NAMESPACE, 'pump', PUMP_PIN);
-
-schedule.scheduleJob('* 6 * * *', () => {
-  log('Turning on light at hour 6');
-  log('Time is ' + moment().format('H:mm:ss'));
-  light.activate();
-});
-
-schedule.scheduleJob('* 22 * * *', () => {
-  log('Turning off light at hour 22');
-  log('Time is ' + moment().format('H:mm:ss'));
-  light.deactivate();
-});
 
 setInterval(() => {
   // Do nothing, just keep process alive

@@ -25,9 +25,11 @@ const actuatorTest = socketNamespace => () => {
   before(done => {
     client = io.connect(url + socketNamespace, options);
     client.on(EVENT_NEW_STATE, state => {
+      console.log('New state received:', state);
       currentState = state;
     });
     client.on(EVENT_NEW_MODE, mode => {
+      console.log('New mode received:', mode);
       currentMode = mode;
     });
     setTimeout(done, 20);
@@ -49,10 +51,15 @@ const actuatorTest = socketNamespace => () => {
     it('receives back the new state', () => {
       expect(currentState).to.eql('on');
     });
+  });
 
-    after(() => {
-      // reset the state
-      client.emit('state', 'off');
+  describe('when setting new mode', () => {
+    before(() => {
+      client.emit('mode', 'automatic');
+    });
+
+    it('receives back the new mode', () => {
+      expect(currentMode).to.eql('automatic');
     });
   });
 
