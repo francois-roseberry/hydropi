@@ -28,7 +28,7 @@
     "concurrently": "5.0.0",
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
-    "express": "4.16.2",
+    "express": "4.18.2",
     "http": "0.0.0",
     "mock-socket": "7.1.0",
     "react-test-renderer": "16.2.0",
